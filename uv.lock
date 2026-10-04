@@ -26,15 +26,42 @@ wheels = [
 ]
 
 [[package]]
-name = "django-test"
+name = "django-reference-api"
 version = "0.1.0"
-source = { editable = "." }
+source = { virtual = "." }
 dependencies = [
     { name = "django" },
+    { name = "djangorestframework" },
+    { name = "python-dotenv" },
 ]
 
 [package.metadata]
-requires-dist = [{ name = "django", specifier = ">=6.1.1" }]
+requires-dist = [
+    { name = "django", specifier = ">=6.1.1" },
+    { name = "djangorestframework", specifier = ">=3.18.1" },
+    { name = "python-dotenv", specifier = ">=1.2.4" },
+]
+
+[[package]]
+name = "djangorestframework"
+version = "3.18.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "django" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/8a/2e/b3ce9d449b1ed9f9dd74fb7dfbc5f20860d5f40c2b4b10a2c3eabd8ff579/djangorestframework-3.18.1.tar.gz", hash = "sha256:605d79fa2ec2f02905492e5ea13d903c2d842d0b4c915a57f7bf02ab9f3c91dd", size = 915653, upload-time = "2026-09-07T18:04:08.288Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/e8/83/5ed615e47339d8e65f62eb1a8133f8f046492eb3a25ad40d90acb9a208b3/djangorestframework-3.18.1-py3-none-any.whl", hash = "sha256:f1409d698967aaf82d5d98d76b549c8fba8bd92ebd0d83d24454508f72168dc2", size = 901373, upload-time = "2026-09-07T18:04:06.237Z" },
+]
+
+[[package]]
+name = "python-dotenv"
+version = "1.2.4"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/74/26/2fbeedb218a787a5eea551c7532cac4e009f83d689dd2faa0d0353473f86/python_dotenv-1.2.4.tar.gz", hash = "sha256:f0d53e69935a851c0dcc78f3ab7aaccd8cabef0b92382b576b824212902873c0", size = 60824, upload-time = "2026-10-01T05:36:10Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/60/d1/38f3a3405989a89ac18390803e70c6ad7c7760da4f9b83cbeca0c44a0c72/python_dotenv-1.2.4-py3-none-any.whl", hash = "sha256:42269a8a5b3fd54ffa6f3d84b18abed50064717576b4ecf03dc4a55d8aa04fdc", size = 23266, upload-time = "2026-10-01T05:36:08.633Z" },
+]
 
 [[package]]
 name = "sqlparse"

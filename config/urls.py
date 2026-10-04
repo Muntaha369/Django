@@ -1,23 +1,22 @@
 """
-URL configuration for config project.
+The root URLconf: URL resolution starts here for every incoming request.
 
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/6.1/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+`urlpatterns` is checked top to bottom. This file stays small on purpose: it
+delegates ("includes") each area of the API to the URLconf of the app that owns
+it. That is the same idea as mounting a router in Express:
+
+    app.use("/api/users", usersRouter)
 """
+
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import include, path
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('',include('todos.urls'))    # '' <- This means it operates on base url like mysite.com/hello
+    # Django's built-in admin site.
+    path("admin/", admin.site.urls),
+
+    # Everything starting with "api/users/" is handled by the `users` app.
+    # include() strips that prefix and passes the REST of the path to
+    # users/urls.py, which then matches it against that app's own patterns.
+    path("api/users/", include("users.urls")),
 ]
